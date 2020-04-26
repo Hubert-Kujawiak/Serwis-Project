@@ -1,0 +1,113 @@
+.allSide {
+  display: flex;
+  font-family: 'Baloo Chettan 2', cursive;
+  height: 90vh;
+  background-image: url("../images/cla.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-content: space-between;
+  overflow: auto;
+  .parts {
+    background-color: white;
+    text-align: center;
+    width: 50vw;
+    margin: 1rem;
+    border-radius: 30px;
+    border: 2px solid red;
+    box-shadow: 0px 0px 4px 1px red;
+    input {
+      margin: 1rem;
+      padding: 0.5rem;
+      border-radius: 50px;
+      background-color: white;
+      outline: 0;
+    }
+    .listPart {
+      padding: 1rem;
+    }
+  }
+  span {
+    border: 1px solid;
+    padding: 1rem;
+  }
+  .tableParts {
+    margin: 0 auto;
+    thead{
+      padding: 1rem;
+      font-size: 1.5rem;
+    }
+    td{
+      padding: 2rem;
+    }
+  }
+}
+.btnMinus {
+  font-family: 'Baloo Chettan 2', cursive;
+  outline: 0;
+  border: none;
+  border-radius: 7px;
+  padding: 0.3rem 0.6rem;
+  background-color: cornflowerblue;
+  box-shadow: 1px 1px 2px 1px cornflowerblue;
+  margin-right: 0.5rem;
+  color: white;
+  &:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: red;
+    box-shadow: 1px 1px 2px 1px red;
+  }
+}
+.btnDelete {
+  font-family: 'Baloo Chettan 2', cursive;
+  outline: 0;
+  border: none;
+  border-radius: 7px;
+  padding: 0.3rem 0.6rem;
+  background-color: cornflowerblue;
+  box-shadow: 1px 1px 2px 1px cornflowerblue;
+  margin-right: 1rem;
+  color: white;
+  &:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: red;
+    box-shadow: 1px 1px 2px 1px red;
+  }
+}
+
+.formAddParts {
+  background: white;
+  margin: 5rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 2px 1px white;
+  label {
+    font-size: 1rem;
+  }
+  input {
+    font-family: 'Baloo Chettan 2', cursive;
+    padding: 0.7rem 0.5rem;
+    margin: 1rem 0;
+    border-radius: 50px;
+    outline: 0;
+  }
+  button {
+    font-family: 'Baloo Chettan 2', cursive;
+    outline: 0;
+    border: none;
+    border-radius: 30px;
+    padding: 0.5rem 2rem;
+    background-color: cornflowerblue;
+    margin-right: 1rem;
+    color: white;
+    box-shadow: 1px 1px 2px 1px cornflowerblue;
+    &:hover {
+      transition: 0.5s;
+      background-color: red;
+      box-shadow: 1px 1px 2px 1px red;
+      cursor: pointer;
+    }
+  }
+}

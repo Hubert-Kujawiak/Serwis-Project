@@ -1,0 +1,114 @@
+.all {
+  display: flex;
+    height: 90vh;
+    background-image: url("../images/cla.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    justify-content: center;
+    background-position: center;
+}
+.carList {
+  width: 50vw;
+  height: 90vh;
+  border-right: 3px solid black;
+}
+.addCar {
+  margin-top: 2rem;
+  background-color: white;
+  height: 80vh;
+  border-radius: 50px;
+  box-shadow: 1px 1px 3px 1px white;
+}
+.formAddCar {
+  font-family: 'Baloo Chettan 2', cursive;
+  font-size: 0.8rem;
+  margin: 2rem 4rem;
+  label {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+  }
+  input {
+    margin: 1rem 0 1rem 1rem;
+    border-radius: 10px;
+    padding: 0.5rem;
+    outline: 0;
+  }
+  select {
+    margin-bottom: 1rem;
+    font-family: 'Baloo Chettan 2', cursive;
+    margin-left: 1rem;
+  }
+  .submitButton{
+    font-size: 1.1rem;
+    font-family: 'Baloo Chettan 2', cursive;
+    background-color: #6d9de4;
+    border: none;
+    box-shadow: 1px 1px 3px 1px #6d9de4;
+    color: white;
+    width: 10rem;
+    padding: 0.5rem;
+    border-radius: 50px;
+    margin: 1rem 1rem 1rem 10rem;
+    outline: 0;
+    opacity: 80%;
+    &:hover{
+      opacity: 100%;
+      transition: 0.5s;
+      background-color: red;
+      box-shadow: 1px 1px 3px 1px red;
+      cursor: pointer;
+    }
+  }
+  textarea {
+    width: 20rem;
+    height: 7rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    resize: none;
+  }
+  .markCar {
+    padding-left: 2.5rem;
+  }
+  .selectOption {
+    display: flex;
+    align-items: baseline;
+    select {
+      padding: 0.3rem;
+      background-color: white;
+      border-radius: 14px;
+      outline: 0;
+      cursor: pointer;
+    }
+  }
+  .errorMessage {
+    font-size: 1.2rem;
+    color: red;
+    text-align: center;
+  }
+}
+
+.allAddList {
+  display: flex;
+  .buttonPlus {
+    background-color: red;
+    padding: 0rem;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
+    opacity: 70%;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    &:hover {
+      opacity: 100%;
+      transition: 0.5s;
+      font-weight: bold;
+    }
+  }
+}
+.listElem {
+  list-style: decimal;
+  margin-left: 9rem;
+  font-size: 1rem;
+}

@@ -1,0 +1,136 @@
+.allItem {
+  height: 90vh;
+  background-image: url("../images/cla.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+  .searchInput {
+    font-family: 'Baloo Chettan 2', cursive;
+    font-size: 1.5rem;
+    margin: 2rem 0 0.5rem 2rem;
+    input {
+      margin-left: 1rem;
+      border-radius: 50px;
+      border: none;
+      padding: 1rem;
+      box-shadow: 1px 1px 2px 1px white;
+      outline: 0;
+    }
+  }
+}
+.allCarList {
+  font-family: 'Baloo Chettan 2', cursive;
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.7rem;
+  }
+  box-shadow: 0px 0px 4px 1px red;
+  margin: 2rem;
+  border-radius: 10px;
+  line-height: 1.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 1rem 0;
+  background-color: white;
+  width: 39vw;
+  border: 2px solid red;
+  button {
+    outline: 0;
+    font-family: 'Baloo Chettan 2', cursive;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 50px;
+    background: #423b3b;
+    box-shadow: 1px 1px 3px 1px #423b3b;
+    color: white;
+    margin: 1rem;
+    opacity: 70%;
+    &:hover {
+      opacity: 100%;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+  }
+}
+.otherInformation {
+  font-family: 'Baloo Chettan 2', cursive;
+  width: 40vw;
+  height: max-content;
+  border: 2px solid red;
+  box-shadow: 0px 0px 4px 1px red;
+  margin: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 3rem;
+  background: #423b3b;
+  display: block;
+  color: aliceblue;
+  button{
+    margin: 0 1rem 1rem 1rem;
+    font-family: 'Baloo Chettan 2', cursive;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 50px;
+    background: white;
+    color: #423b3b;
+    box-shadow: 1px 1px 2px 1px white;
+    outline: 0;
+    opacity: 70%;
+    &:hover {
+      opacity: 100%;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+  }
+  a {
+    font-size: 1rem;
+    margin: 0 1rem 1rem 1rem;
+    font-family: 'Baloo Chettan 2', cursive;
+    border: none;
+    padding: 0.5rem 2rem;
+    border-radius: 50px;
+    background: white;
+    color: #423b3b;
+    box-shadow: 1px 1px 2px 1px white;
+    outline: 0;
+    opacity: 70%;
+    &:hover {
+      opacity: 100%;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+  }
+  .morePlace {
+    padding-top: 1rem;
+  }
+}
+
+.addRepair {
+  textarea{
+    font-family: 'Baloo Chettan 2', cursive;
+    margin: 0.5rem;
+    height: 8rem;
+    width: 15rem;
+    border-radius: 0.5rem;
+    resize: none;
+    box-shadow: 1px 1px 3px 2px white;
+    border: none;
+    outline: 0;
+  }
+  label {
+    margin-right: 1rem;
+  }
+  input {
+    font-family: 'Baloo Chettan 2', cursive;
+    padding: 0.5rem;
+    border-radius: 50px;
+    border: none;
+    outline: 0;
+    box-shadow: 1px 1px 3px 2px white;
+    margin-bottom: 1rem;
+  }
+}

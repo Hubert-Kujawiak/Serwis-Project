@@ -1,0 +1,179 @@
+{
+  "cars": [
+    {
+      "id": 7,
+      "mark": "Fiat",
+      "model": "500",
+      "body": "Hatchback",
+      "fuel": "Benzyna",
+      "power": "74",
+      "vin": "34500",
+      "numRej": "KR 6ME11",
+      "date": "23.04.2020",
+      "other": [
+        "Wymiana Opon",
+        "Wymiana wahacza prawy przód",
+        "Wymiana filtrów komplet",
+        "Data: 24.3.2020",
+        "xxxxxxx"
+      ],
+      "parts": [
+        "Opony 175/65/14",
+        "Wahacz przód prawy",
+        "Filtry",
+        "Data: 24.3.2020",
+        "xxxxxx"
+      ],
+      "price": "150"
+    },
+    {
+      "id": 8,
+      "mark": "Opel",
+      "model": "Astra",
+      "body": "Kombi",
+      "fuel": "Benzyna + LPG",
+      "power": "115",
+      "vin": "195000",
+      "numRej": "KR 5ME25",
+      "date": "13.05.2019",
+      "other": [
+        "Wymiana kompletnego zawieszenia przód",
+        "Wymiana uszczelki kolektora wydechowego",
+        "Przegląd okresowy",
+        "Serwis klimatyzacji",
+        "Wymiana klocków ham. tył"
+      ],
+      "parts": [
+        "Kompletny zestaw naprawczy zawieszenia przód",
+        "Uszczelka kol.wydech",
+        "Olej 10W40",
+        "Komplet filtrów",
+        "Czynnik 134a 100g",
+        "Klocki ham. tył Brembo"
+      ],
+      "price": "120"
+    },
+    {
+      "id": 9,
+      "mark": "Ford",
+      "model": "Ranger",
+      "body": "Sedan",
+      "fuel": "Diesel",
+      "power": "180",
+      "vin": "95000",
+      "numRej": "NOS 9X234",
+      "date": "11.03.2019",
+      "other": [
+        "Przyciemnianie szyb",
+        "Malowanie felg aluminiowych",
+        "Wymiana szyby czołowej"
+      ],
+      "parts": [
+        "Folia przyciemniająca 80%",
+        "Farba spray black",
+        "NordGlass szyba czołowa"
+      ],
+      "price": "1200"
+    },
+    {
+      "id": 10,
+      "mark": "Toyota",
+      "model": "Auris",
+      "body": "Hatchback",
+      "fuel": "Hybrid",
+      "power": "140",
+      "vin": "67800",
+      "numRej": "WU 34M77",
+      "date": "01.02.2018",
+      "other": [
+        "Konserwacja baterii",
+        "Przegląd okresowy 70kkm",
+        "Wymiana tłumika"
+      ],
+      "parts": [
+        "Olej",
+        "Filtry komplet",
+        "Płyn ham.",
+        "Tłumik końcowy"
+      ],
+      "price": "1000"
+    },
+    {
+      "id": 11,
+      "mark": "Suzuki",
+      "model": "Vitara",
+      "body": "Hatchback",
+      "fuel": "Diesel",
+      "power": "150",
+      "vin": "200000",
+      "numRej": "WU 5634M",
+      "date": "20.03.2018",
+      "other": [
+        "Naprawa hamuców",
+        "Data: 24.3.2020",
+        "Wymiana żarówki"
+      ],
+      "parts": [
+        "Zacisk hamulcowy",
+        "Data: 24.3.2020",
+        "Żarówka H7"
+      ],
+      "price": "70"
+    },
+    {
+      "id": 12,
+      "mark": "Nissan",
+      "model": "Primera",
+      "body": "Sedan",
+      "fuel": "Benzyna + LPG",
+      "power": "95",
+      "vin": "330200",
+      "numRej": "KRA 452ME",
+      "date": "11.09.2017",
+      "other": [
+        "Wymiana filtrów LPG",
+        "Wymiana żarówki H4",
+        "Wymiana amortyzatorów tył",
+        "Czyszczenie przepustnicy",
+        "Data: 24.3.2020",
+        "Wymiana opon letnie"
+      ],
+      "parts": [
+        "Komplet filtrów LPG",
+        "Żarówka H4",
+        "Amortyzatory tył KYB",
+        "Data: 24.3.2020",
+        "Opony 165/65/14"
+      ],
+      "price": "130"
+    },
+    {
+      "id": 13,
+      "mark": "Opel",
+      "model": "Astra",
+      "body": "Hatchback",
+      "fuel": "Benzyna + LPG",
+      "power": "123",
+      "vin": "2324234",
+      "numRej": "KR2423W",
+      "date": "20.20.2020",
+      "other": [
+        "SDFSDF",
+        "ASDSD"
+      ],
+      "parts": [
+        "ASDASD",
+        "ASDSAD"
+      ],
+      "price": "1000"
+    }
+  ],
+  "parts": [
+    {
+      "id": 1,
+      "name": "Amortyzator",
+      "quantity": "2",
+      "serNum": "KYB 234354"
+    }
+  ]
+}

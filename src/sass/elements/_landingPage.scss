@@ -1,0 +1,83 @@
+.image {
+  height: 90vh;
+  background-image: url("../images/cla.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  background-position: center;
+}
+.welcomeText {
+  color: black;
+  text-align: center;
+  font-family: 'Baloo Chettan 2', cursive;
+  font-size: 2.5rem;
+  h1 {
+    text-align: center;
+    padding: 2rem;
+  }
+  p{
+    font-size: 2rem;
+    text-align: center;
+    opacity: 85%;
+  }
+  span {
+    text-align: center;
+  }
+  .buttonLandPageFirst {
+    text-align: center;
+    font-family: 'Baloo Chettan 2', cursive;
+    color: white;
+    border: none;
+    background-color: #4a4747;
+    margin: 1rem 3rem;
+    padding: 1.2rem 2.1rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    box-shadow: 7px 5px 25px black;
+    animation: pulse 2s infinite;
+
+    @keyframes pulse {
+      0%{
+        opacity: 15%;
+      }
+      100%{
+        opacity: 100%;
+      }
+    }
+    a{
+      text-decoration: none;
+      color: white;
+    }
+  }
+  .buttonLandPageSecond {
+    font-size: 1rem;
+      text-align: center;
+      font-family: 'Baloo Chettan 2', cursive;
+      color: white;
+      border: none;
+      background-color: #4a4747;
+      margin: 1rem 3rem;
+      padding: 1.2rem 2.3rem;
+      border-radius: 50px;
+      box-shadow: 7px 5px 25px black;
+
+    animation: pulse 2s infinite;
+    @keyframes pulse {
+      0%{
+        opacity: 15%;
+      }
+      100%{
+        opacity: 100%;
+      }
+    }
+    //&:hover {
+    //  opacity: 100%;
+    //  cursor: pointer;
+    //}
+    a{
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
