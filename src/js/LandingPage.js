@@ -12,6 +12,7 @@ export default function LandingPage() {
                     <p>Wszystkie naprawy oraz serwisy w jednym miejscu!</p>
                     <button className="buttonLandPageFirst"><Link to="/add">Dodaj Pojazd</Link></button>
                     <button className="buttonLandPageSecond"><Link to="/search">Baza Pojazdów</Link></button>
+
                 </div>
             </div>
         </>
