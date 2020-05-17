@@ -7,6 +7,7 @@ import Header from "./Header";
 import AddCar from "./AddCar";
 import CarList from "./CarList";
 import PartsPage from "./PartsPage";
+import Firebase, { FirebaseContext } from './Firebase';
 
 const App = () => (
     <>
@@ -31,4 +32,8 @@ const App = () => (
 )
 
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(
+    <FirebaseContext.Provider value={new Firebase()}>
+        <App />
+    </FirebaseContext.Provider>,
+    document.getElementById('app'));

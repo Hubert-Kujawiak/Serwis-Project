@@ -1,4 +1,5 @@
 import React,{useEffect,useState} from 'react'
+import firebase from "firebase";
 
 export default function CarList() {
 
@@ -18,38 +19,26 @@ export default function CarList() {
     const year = new Date().getFullYear()
     const actDate = (day + "." + mon + "." + year)
 
-    const fetchAllCars = () => {
-        const API = "http://localhost:3000";
-        fetch(`${API}/cars/`)
-            .then(response => response.json())
-            .then(data => setAllCars(data))
-            .catch(error => {
-                console.log(error);
-            });
-    }
 
-    useEffect( () => {
-        fetchAllCars()
+    // Pobieranie samochodow z bazy firebase
+
+    const db = firebase.firestore()
+
+    useEffect( ( ) => {
+        db.collection(`cars`).get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log(`${doc.id} => ${doc.data()}`);
+                setAllCars( prev => ([...prev, doc.data()]))
+            });
+        });
     },[])
 
-    const handleDelete = (props) => {
-        const API = "http://localhost:3000";
-        fetch(`${API}/cars/${props}`, {
-            method: "DELETE"
-        })
-            .then(fetchAllCars)
-    }
-
-
-    const ShowMeMoreInfo = (props) => {
-        setShowMore('block')
-        const API = "http://localhost:3000";
-        fetch(`${API}/cars/${props}`)
-            .then(response => response.json())
-            .then(data => setMoreInfo(data))
-            .catch(error => {
-                console.log(error);
-            });
+    const handleDelete = () => {
+        db.collection("cars").doc("DC").delete().then(function() {
+            console.log("Document successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
     }
 
     const style = {
@@ -66,7 +55,6 @@ export default function CarList() {
         setSearchCar(event.target.value)
     }
 
-
     const handleAddRepair = () => {
         setShowAddRepair('block')
     }
@@ -82,31 +70,6 @@ export default function CarList() {
     const handlePriceRepair = (event) => {
         setPriceRepair(event.target.value)
     }
-
-
-    const handleSubmitAddRepair = obj => {
-        setShowAddRepair('none')
-        const API = "http://localhost:3000";
-        const data = {
-            other: [...obj.other, "Data: " + actDate, ...firstAddInput.split(',')],
-            parts: [...obj.parts, "Data: " + actDate, ...secondAddInput.split(',')],
-            price: priceRepair
-        }
-        fetch(`${API}/cars/${obj.id}`, {
-            method: "PATCH",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(response => {
-                fetchAllCars();
-                ShowMeMoreInfo(obj.id)
-            })
-        setFirstAddInput('')
-        setSecondAddInput('')
-        setPriceRepair('')
-    };
 
     return(
         <>
@@ -128,7 +91,7 @@ export default function CarList() {
                                             <p>Nr Rejestracyjny: {car.numRej}</p>
                                             <p>Przebieg: {car.vin}</p>
                                             <p>Data Serwisu: {car.date}</p>
-                                            <button onClick={() => ShowMeMoreInfo(car.id)}>Więcej Informacji</button>
+                                            <button onClick={() => ShowMeMoreInfo(doc.id)}>Więcej Informacji</button>
                                             <button onClick={() => handleDelete(car.id)}>Usuń z bazy</button>
                                         </li>
                                     </ul>
@@ -167,3 +130,66 @@ export default function CarList() {
         </>
     )
 }
+
+
+// JSON fetch
+
+// const fetchAllCars = () => {
+//     const API = "http://localhost:3000";
+//     fetch(`${API}/cars/`)
+//         .then(response => response.json())
+//         .then(data => setAllCars(data))
+//         .catch(error => {
+//             console.log(error);
+//         });
+// }
+
+// useEffect( () => {
+//     fetchAllCars()
+// },[])
+
+//
+// const handleSubmitAddRepair = obj => {
+//     setShowAddRepair('none')
+//     const API = "http://localhost:3000";
+//     const data = {
+//         other: [...obj.other, "Data: " + actDate, ...firstAddInput.split(',')],
+//         parts: [...obj.parts, "Data: " + actDate, ...secondAddInput.split(',')],
+//         price: priceRepair
+//     }
+//     fetch(`${API}/cars/${obj.id}`, {
+//         method: "PATCH",
+//         body: JSON.stringify(data),
+//         headers: {
+//             "Content-Type": "application/json"
+//         }
+//     })
+//         .then(response => {
+//             fetchAllCars();
+//             ShowMeMoreInfo(obj.id)
+//         })
+//     setFirstAddInput('')
+//     setSecondAddInput('')
+//     setPriceRepair('')
+// };
+
+
+// const ShowMeMoreInfo = (props) => {
+//     setShowMore('block')
+//     const API = "http://localhost:3000";
+//     fetch(`${API}/cars/${props}`)
+//         .then(response => response.json())
+//         .then(data => setMoreInfo(data))
+//         .catch(error => {
+//             console.log(error);
+//         });
+// }
+
+
+// const handleDelete = (props) => {
+//     const API = "http://localhost:3000";
+//     fetch(`${API}/cars/${props}`, {
+//         method: "DELETE"
+//     })
+//         .then(fetchAllCars)
+// }

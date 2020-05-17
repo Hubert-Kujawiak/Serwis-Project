@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import CarList from "./CarList";
+import firebase from "firebase";
 
 export default function AddCar() {
 
@@ -23,6 +24,10 @@ export default function AddCar() {
 
     const [error, setError] = useState([])
 
+    //Read data firebase - all items
+
+    // const [readData, setReadData] = useState([])
+
 
     const handleMark = (event) => {
         if(event.target.value.length <= 2){
@@ -33,7 +38,7 @@ export default function AddCar() {
         }
     }
     const handleModel = (event) => {
-        if(event.target.value.length <= 2){
+        if(event.target.value.length < 2){
             setError('Nazwa modelu za krótka !')
         }else{
             setModel(event.target.value)
@@ -99,9 +104,37 @@ export default function AddCar() {
         setTabPartList(prev => [...prev, partsAddList])
     }
 
-    const handleSubmit = (event) => {
-        const cars = {
-            id: '',
+    // const handleSubmit = (event) => {
+    //     const cars = {
+    //         id: '',
+    //         mark: mark,
+    //         model: model,
+    //         body: body,
+    //         fuel: fuel,
+    //         power: power,
+    //         vin: vin,
+    //         numRej: numbRej,
+    //         date: date,
+    //         other: tabRepList,
+    //         parts: tabPartList,
+    //         price: price
+    //     };
+    //
+    //     const API = "http://localhost:3000";
+    //     fetch(`${API}/cars/`, {
+    //         method: "POST",
+    //         body: JSON.stringify(cars),
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }
+    //     })
+    //         // .then(response => props.fetchAllRequest())
+    // }
+
+    const db = firebase.firestore()
+
+    const handleSubmit = () => {
+        db.collection(`cars`).add({
             mark: mark,
             model: model,
             body: body,
@@ -113,18 +146,15 @@ export default function AddCar() {
             other: tabRepList,
             parts: tabPartList,
             price: price
-        };
-
-        const API = "http://localhost:3000";
-        fetch(`${API}/cars/`, {
-            method: "POST",
-            body: JSON.stringify(cars),
-            headers: {
-                "Content-Type": "application/json"
-            }
         })
-            // .then(response => props.fetchAllRequest())
+            .then(function (docRef) {
+                alert("Document written with ID: ", docRef.id);
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
     }
+
 
     return (
         <>

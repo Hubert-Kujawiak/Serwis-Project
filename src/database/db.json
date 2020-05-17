@@ -15,16 +15,20 @@
         "Wymiana wahacza prawy przód",
         "Wymiana filtrów komplet",
         "Data: 24.3.2020",
-        "xxxxxxx"
+        "xxxxxxx",
+        "Data: 26.3.2020",
+        "ddd"
       ],
       "parts": [
         "Opony 175/65/14",
         "Wahacz przód prawy",
         "Filtry",
         "Data: 24.3.2020",
-        "xxxxxx"
+        "xxxxxx",
+        "Data: 26.3.2020",
+        "dddd"
       ],
-      "price": "150"
+      "price": "123"
     },
     {
       "id": 8,
@@ -171,9 +175,15 @@
   "parts": [
     {
       "id": 1,
-      "name": "Amortyzator",
-      "quantity": "2",
-      "serNum": "KYB 234354"
+      "name": "Amor",
+      "quantity": 9,
+      "serNum": "12323"
+    },
+    {
+      "id": 2,
+      "name": "Amor",
+      "quantity": 94,
+      "serNum": "123723"
     }
   ]
 }

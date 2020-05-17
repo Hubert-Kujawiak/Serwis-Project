@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import firebase from "firebase";
 
 export default function carParts() {
 
@@ -8,19 +9,6 @@ export default function carParts() {
     const [searchParts, setSearchParts] = useState('')
     const [serialNumber, setSerialNumber] = useState('')
 
-    const fetchAllParts = () => {
-        const API = "http://localhost:3000";
-        fetch(`${API}/parts/`)
-            .then(response => response.json())
-            .then(data => setParts(data))
-            .catch(error => {
-                console.log(error);
-            });
-    }
-
-    useEffect( () => {
-        fetchAllParts()
-    },[])
 
     const handleNameParts = (event) => {
         setNameParts(event.target.value)
@@ -35,69 +23,31 @@ export default function carParts() {
         setSerialNumber(event.target.value)
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        const parts = {
-            id: '',
+    const db = firebase.firestore()
+
+    const handleSubmit = () => {
+        db.collection(`parts`).add({
             name: nameParts,
             quantity: numParts,
             serNum: serialNumber
-        }
-
-        const API = "http://localhost:3000";
-        fetch(`${API}/parts/`, {
-            method: "POST",
-            body: JSON.stringify(parts),
-            headers: {
-                "Content-Type": "application/json"
-            }
         })
-        .then(response => fetchAllParts())
-        setNameParts('')
-        setNumParts('')
-        setSerialNumber('')
+            .then(function (docRef) {
+                alert("Document written with ID: ", docRef.id);
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
     }
 
-    const handleDelete = (props) => {
-        const API = "http://localhost:3000";
-        fetch(`${API}/parts/${props}`, {
-            method: "DELETE"
-        })
-            .then(fetchAllParts)
-    }
-    const handleMinusParts = parts => {
-        const API = "http://localhost:3000";
-        const data = {
-            quantity: parts.quantity -1
-        }
-        fetch(`${API}/parts/${parts.id}`, {
-            method: "PATCH",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(response => {
-                fetchAllParts()
-            })
-    };
+    useEffect( ( ) => {
+        db.collection(`parts`).get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log(`${doc.id} => ${doc.data()}`);
+                setParts( prev => ([...prev, doc.data()]))
+            });
+        });
+    },[])
 
-    const handlePlusParts = parts => {
-        const API = "http://localhost:3000";
-        const data = {
-            quantity: parts.quantity +1
-        }
-        fetch(`${API}/parts/${parts.id}`, {
-            method: "PATCH",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(response => {
-                fetchAllParts()
-            })
-    };
 
     return (
         <>
@@ -153,7 +103,89 @@ export default function carParts() {
                     </div>
                 </div>
             </div>
-
         </>
     )
 }
+
+
+
+// JSON fetch
+
+// const fetchAllParts = () => {
+//     const API = "http://localhost:3000";
+//     fetch(`${API}/parts/`)
+//         .then(response => response.json())
+//         .then(data => setParts(data))
+//         .catch(error => {
+//             console.log(error);
+//         });
+// }
+//
+// useEffect( () => {
+//     fetchAllParts()
+// },[])
+
+
+// const handleSubmit = (event) => {
+//     event.preventDefault()
+//     const parts = {
+//         id: '',
+//         name: nameParts,
+//         quantity: numParts,
+//         serNum: serialNumber
+//     }
+//
+//     const API = "http://localhost:3000";
+//     fetch(`${API}/parts/`, {
+//         method: "POST",
+//         body: JSON.stringify(parts),
+//         headers: {
+//             "Content-Type": "application/json"
+//         }
+//     })
+//     .then(response => fetchAllParts())
+//     setNameParts('')
+//     setNumParts('')
+//     setSerialNumber('')
+// }
+
+// const handleDelete = (props) => {
+//     const API = "http://localhost:3000";
+//     fetch(`${API}/parts/${props}`, {
+//         method: "DELETE"
+//     })
+//         .then(fetchAllParts)
+// }
+// const handleMinusParts = parts => {
+//     const API = "http://localhost:3000";
+//     const data = {
+//         quantity: parts.quantity -1
+//     }
+//     fetch(`${API}/parts/${parts.id}`, {
+//         method: "PATCH",
+//         body: JSON.stringify(data),
+//         headers: {
+//             "Content-Type": "application/json"
+//         }
+//     })
+//         .then(response => {
+//             fetchAllParts()
+//         })
+// };
+//
+// const handlePlusParts = parts => {
+//     const API = "http://localhost:3000";
+//     const data = {
+//         quantity: parts.quantity +1
+//     }
+//     fetch(`${API}/parts/${parts.id}`, {
+//         method: "PATCH",
+//         body: JSON.stringify(data),
+//         headers: {
+//             "Content-Type": "application/json"
+//         }
+//     })
+//         .then(response => {
+//             fetchAllParts()
+//         })
+// };
