@@ -33,13 +33,28 @@ export default function CarList() {
         });
     },[])
 
-    const handleDelete = () => {
-        db.collection("cars").doc("DC").delete().then(function() {
+    const handleDelete = (numRej) => {
+        db.collection("cars").doc(`${numRej}`).delete().then(function() {
             console.log("Document successfully deleted!");
         }).catch(function(error) {
             console.error("Error removing document: ", error);
         });
     }
+
+    const ShowMeMoreInfo = (numRej) => {
+        console.log(numRej)
+        setShowMore('block')
+
+        useEffect( ( ) => {
+            db.collection(`cars`).doc(`${numRej}`).get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(`${doc.id} => ${doc.data()}`);
+                    setMoreInfo(doc.data())
+                });
+            });
+        },[])
+    }
+    console.log(moreInfo)
 
     const style = {
         display: showMore
@@ -91,8 +106,8 @@ export default function CarList() {
                                             <p>Nr Rejestracyjny: {car.numRej}</p>
                                             <p>Przebieg: {car.vin}</p>
                                             <p>Data Serwisu: {car.date}</p>
-                                            <button onClick={() => ShowMeMoreInfo(doc.id)}>Więcej Informacji</button>
-                                            <button onClick={() => handleDelete(car.id)}>Usuń z bazy</button>
+                                            <button onClick={() => ShowMeMoreInfo(car.numRej)}>Więcej Informacji</button>
+                                            <button onClick={() => handleDelete(car.numRej)}>Usuń z bazy</button>
                                         </li>
                                     </ul>
                                 </div>

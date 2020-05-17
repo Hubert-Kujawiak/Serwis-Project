@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import CarList from "./CarList";
+
 import firebase from "firebase";
 
 export default function AddCar() {
@@ -104,37 +104,10 @@ export default function AddCar() {
         setTabPartList(prev => [...prev, partsAddList])
     }
 
-    // const handleSubmit = (event) => {
-    //     const cars = {
-    //         id: '',
-    //         mark: mark,
-    //         model: model,
-    //         body: body,
-    //         fuel: fuel,
-    //         power: power,
-    //         vin: vin,
-    //         numRej: numbRej,
-    //         date: date,
-    //         other: tabRepList,
-    //         parts: tabPartList,
-    //         price: price
-    //     };
-    //
-    //     const API = "http://localhost:3000";
-    //     fetch(`${API}/cars/`, {
-    //         method: "POST",
-    //         body: JSON.stringify(cars),
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         }
-    //     })
-    //         // .then(response => props.fetchAllRequest())
-    // }
-
     const db = firebase.firestore()
 
-    const handleSubmit = () => {
-        db.collection(`cars`).add({
+    const handleSubmit = (numbRej) => {
+        db.collection(`cars`).doc(`${numbRej}`).set({
             mark: mark,
             model: model,
             body: body,
@@ -160,7 +133,7 @@ export default function AddCar() {
         <>
             <div className="all">
                 <div className="addCar">
-                    <form className="formAddCar" onSubmit={handleSubmit}>
+                    <form className="formAddCar" onSubmit={ () => handleSubmit(numbRej)}>
                         <h1 className="errorMessage">{error}</h1>
                         <label className="markCar">Marka:
                             <input type="text" onChange={handleMark}/>
@@ -240,3 +213,30 @@ export default function AddCar() {
     )
 
 }
+
+// const handleSubmit = (event) => {
+//     const cars = {
+//         id: '',
+//         mark: mark,
+//         model: model,
+//         body: body,
+//         fuel: fuel,
+//         power: power,
+//         vin: vin,
+//         numRej: numbRej,
+//         date: date,
+//         other: tabRepList,
+//         parts: tabPartList,
+//         price: price
+//     };
+//
+//     const API = "http://localhost:3000";
+//     fetch(`${API}/cars/`, {
+//         method: "POST",
+//         body: JSON.stringify(cars),
+//         headers: {
+//             "Content-Type": "application/json"
+//         }
+//     })
+//         // .then(response => props.fetchAllRequest())
+// }
