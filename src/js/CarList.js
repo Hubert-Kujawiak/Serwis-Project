@@ -141,6 +141,7 @@ export default function CarList() {
                         <form onSubmit={() => handleSubmitAddRepair(moreInfo)}>
                             <textarea placeholder="Naprawy" onChange={handleFirstPlace} value={firstAddInput}></textarea>
                             <textarea placeholder="Części" onChange={handleSecondPlace} value={secondAddInput}></textarea>
+                            <br/>
                             <label>Cena Usługi: </label>
                             <input onChange={handlePriceRepair}/>
                             <p></p>
