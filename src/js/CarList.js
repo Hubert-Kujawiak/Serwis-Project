@@ -33,13 +33,17 @@ export default function CarList() {
         });
     },[])
 
+    // Usuwanie pojazdów z bazy
+
     const handleDelete = (numRej) => {
         db.collection("cars").doc(`${numRej}`).delete().then(function() {
-            console.log("Document successfully deleted!");
+            alert("Document successfully deleted!");
         }).catch(function(error) {
             console.error("Error removing document: ", error);
         });
     }
+
+    // Funkcja wiecej informacji
 
     const ShowMeMoreInfo = (numRej) => {
         console.log(numRej)

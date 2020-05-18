@@ -128,7 +128,6 @@ export default function AddCar() {
             });
     }
 
-
     return (
         <>
             <div className="all">
