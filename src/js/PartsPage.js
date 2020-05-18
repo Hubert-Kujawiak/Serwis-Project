@@ -23,30 +23,48 @@ export default function carParts() {
         setSerialNumber(event.target.value)
     }
 
+    // Firebase Database -------------------------------------------------
+
     const db = firebase.firestore()
 
-    const handleSubmit = () => {
-        db.collection(`parts`).add({
+
+        useEffect( ( ) => {
+            db.collection(`parts`).get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    // console.log(`${doc.id} => ${doc.data()}`);
+                    setParts( prev => ([...prev, doc.data()]))
+                });
+            });
+        },[])
+
+    const handleSubmit = (serialNumber) => {
+        db.collection(`parts`).doc(`${serialNumber}`).set({
             name: nameParts,
             quantity: numParts,
             serNum: serialNumber
         })
             .then(function (docRef) {
-                alert("Document written with ID: ", docRef.id);
+                alert("Document written in firebase");
+                console.log(docRef)
+                // setParts(prevState => [...prevState, docRef])
             })
             .catch(function (error) {
                 console.error("Error adding document: ", error);
             });
     }
 
-    useEffect( ( ) => {
-        db.collection(`parts`).get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                console.log(`${doc.id} => ${doc.data()}`);
-                setParts( prev => ([...prev, doc.data()]))
-            });
+    const handleDelete = (serNum) => {
+        db.collection("parts").doc(`${serNum}`).delete().then(function() {
+            // alert("Document successfully deleted!");
+        }).then( () => {
+            const all = parts.filter( parts => parts.serNum !== serNum )
+            setParts(all)
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
         });
-    },[])
+    }
+
+    // Koniec Database
 
 
     return (
@@ -54,7 +72,7 @@ export default function carParts() {
             <div className="allSide">
                 <div className="leftSide">
                     <div className="allParts">
-                        <form className="formAddParts" onSubmit={handleSubmit}>
+                        <form className="formAddParts" onSubmit={ () => handleSubmit(serialNumber)}>
                             <label>Nazwa części:
                                 <p>
                                 <input type="text" onChange={handleNameParts} value={nameParts}/>
@@ -81,7 +99,6 @@ export default function carParts() {
                         <input type="text" onChange={handleSearchParts}/>
                         <table className="tableParts">
                             <thead>
-                            <th>ID</th>
                             <th>Nazwa</th>
                             <th>Ilość</th>
                             <th>Serial Num</th>
@@ -89,13 +106,12 @@ export default function carParts() {
                             {
                                 parts.filter(el => el.name.substr(0, searchParts.length).toLowerCase().includes(searchParts)).map( parts => (
                                     <tr>
-                                        <td>{parts.id}</td>
                                         <td>{parts.name}</td>
                                         <td>{parts.quantity}</td>
                                         <td>{parts.serNum}</td>
                                         <button className="btnMinus" onClick={ () => handleMinusParts(parts)}>-</button>
                                         <button className="btnMinus" onClick={ () => handlePlusParts(parts)}>+</button>
-                                        <button className="btnDelete" onClick={() => handleDelete(parts.id)}>Usuń</button>
+                                        <button className="btnDelete" onClick={() => handleDelete(parts.serNum)}>Usuń</button>
                                     </tr>
                                 ))
                             }

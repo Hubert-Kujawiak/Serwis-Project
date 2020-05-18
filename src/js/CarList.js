@@ -1,7 +1,12 @@
 import React,{useEffect,useState} from 'react'
 import firebase from "firebase";
+import {useHistory} from "react-router-dom";
+
+
 
 export default function CarList() {
+
+    const history = useHistory();
 
     const [allCars, setAllCars] = useState([])
     const [moreInfo, setMoreInfo] = useState([])
@@ -20,24 +25,29 @@ export default function CarList() {
     const actDate = (day + "." + mon + "." + year)
 
 
-    // Pobieranie samochodow z bazy firebase
+    // Pobieranie samochodow z bazy firebase ---------------------------------------------------------
 
     const db = firebase.firestore()
 
-    useEffect( ( ) => {
-        db.collection(`cars`).get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                console.log(`${doc.id} => ${doc.data()}`);
-                setAllCars( prev => ([...prev, doc.data()]))
+        useEffect( ( ) => {
+            db.collection(`cars`).get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    // console.log(`${doc.id} => ${doc.data()}`);
+                    setAllCars( prev => ([...prev, doc.data()]))
+                });
             });
-        });
-    },[])
+        },[])
+
+
 
     // Usuwanie pojazdów z bazy
 
     const handleDelete = (numRej) => {
         db.collection("cars").doc(`${numRej}`).delete().then(function() {
-            alert("Document successfully deleted!");
+            // alert("Document successfully deleted!");
+        }).then( () => {
+            const all = allCars.filter( car => car.numRej !== numRej )
+            setAllCars(all)
         }).catch(function(error) {
             console.error("Error removing document: ", error);
         });
@@ -46,19 +56,13 @@ export default function CarList() {
     // Funkcja wiecej informacji
 
     const ShowMeMoreInfo = (numRej) => {
-        console.log(numRej)
-        setShowMore('block')
+        const db = firebase.firestore()
 
-        useEffect( ( ) => {
-            db.collection(`cars`).doc(`${numRej}`).get().then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    console.log(`${doc.id} => ${doc.data()}`);
-                    setMoreInfo(doc.data())
-                });
-            });
-        },[])
+        setShowMore('block')
+        const index = allCars.findIndex(car => car.numRej === numRej )
+        const details = [...allCars][index]
+        setMoreInfo(details)
     }
-    console.log(moreInfo)
 
     const style = {
         display: showMore

@@ -1,8 +1,13 @@
 import React,{useState,useEffect} from 'react'
-
 import firebase from "firebase";
 
+import { useHistory } from 'react-router-dom'
+
+
+
 export default function AddCar() {
+
+    const history = useHistory();
 
     const [mark, setMark] = useState('')
     const [model, setModel] = useState('')
@@ -121,7 +126,8 @@ export default function AddCar() {
             price: price
         })
             .then(function (docRef) {
-                alert("Document written with ID: ", docRef.id);
+                alert("Samochód dodany do bazy");
+                history.push('/search')
             })
             .catch(function (error) {
                 console.error("Error adding document: ", error);
@@ -160,6 +166,7 @@ export default function AddCar() {
                                 <option>Hatchback</option>
                                 <option>Kombi</option>
                                 <option>Sedan</option>
+                                <option>Pickup</option>
                             </select>
                             <div>
                                 <label>Paliwo:</label>
@@ -204,7 +211,7 @@ export default function AddCar() {
                         <label>Cena Usługi:
                             <input onChange={handlePrice}/>
                         </label>
-                        <button type="submit" className="submitButton">Dodaj!</button>
+                        <button type="submit" className="submitButton">Dodaj</button>
                     </form>
                 </div>
             </div>
