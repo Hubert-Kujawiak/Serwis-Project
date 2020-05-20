@@ -1,8 +1,18 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {Link} from "react-router-dom";
 import HeaderBeforeLogin from "./HeaderBeforeLogin";
+import { useHistory } from 'react-router-dom'
+
 
 export default function LogOut() {
+
+    const history = useHistory();
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            history.push("/")
+        }, 3000)
+        return () => clearTimeout(timeout)
+    })
 
     return(
         <>

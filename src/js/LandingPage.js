@@ -16,8 +16,11 @@ function LandingPage( {firebase} ) {
                     <h1>Witaj w aplikacji serwisowej!</h1>
                     <p>Dodawaj samochód do bazy lub je wyszukuj.</p>
                     <p>Wszystkie naprawy oraz serwisy w jednym miejscu!</p>
-                    <button className="buttonLandPageFirst"><Link to="/add">Dodaj Pojazd</Link></button>
-                    <button className="buttonLandPageSecond"><Link to="/search">Baza Pojazdów</Link></button>
+                    {isUser ? <>
+                            <button className="buttonLandPageFirst"><Link to="/add">Dodaj Pojazd</Link></button>
+                            <button className="buttonLandPageSecond"><Link to="/search">Baza Pojazdów</Link></button>
+                            </>
+                     : <p>Zaloguj sie lub załóż konto i korzystaj z aplikacji!</p>}
                 </div>
             </div>
         </>

@@ -1,32 +1,40 @@
 .loginForm {
   text-align: center;
+  font-family: "Baloo Chettan 2", cursive;
+
   h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin: 12rem 0 2rem 0;
     @media (max-width: 1400px) {
-      margin: 6rem 0 1rem 0;
-      font-size: 1.4rem;
+      margin: 6rem 0 2rem 0;
+      font-size: 2rem;
     }
   }
+
   img {
     margin-bottom: 3rem;
   }
+
   a {
+    border-radius: 15px;
     position: relative;
-    right: 9rem;
-    top: 3.5rem;
+    right: 7rem;
+    top: 2rem;
     background-color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     text-decoration: none;
     color: black;
     font-size: 0.8rem;
     &:hover {
-      border: 1px solid black;
+      box-shadow: 0px 0px 4px 1px red;
     }
   }
+
   button {
+    border-radius: 15px;
+    font-family: "Baloo Chettan 2", cursive;
     position: relative;
-    left: 9rem;
+    left: 7rem;
     top: 2rem;
     background-color: white;
     border: none;
@@ -34,10 +42,12 @@
     cursor: pointer;
     font-size: 0.8rem;
     outline: 0;
+
     &:hover {
-      border: 1px solid black;
+      box-shadow: 0px 0px 4px 1px red;
     }
   }
+
   input {
     border: none;
     border-bottom: 1px solid #707070;
@@ -46,16 +56,20 @@
     margin-top: 1rem;
     outline: 0;
   }
+
   label {
     margin-right: 9rem;
     font-size: 0.8rem;
   }
+
   form {
+    box-shadow: 0px 0px 4px 1px red;
     width: 18rem;
-    height: 12rem;
+    height: 9rem;
     margin: 0 auto;
     background-color: white;
     padding: 2rem;
+    border-radius: 15px;
     p {
       margin-top: 4rem;
       color: red;
@@ -63,3 +77,4 @@
     }
   }
 }
+

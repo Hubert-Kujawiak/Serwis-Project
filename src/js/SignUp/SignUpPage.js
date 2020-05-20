@@ -4,11 +4,13 @@ import { compose } from 'recompose';
 
 
 import { withFirebase } from '../Firebase';
+import HeaderBeforeLogin from "../HeaderBeforeLogin";
 
 
 
 const SignUpPage = () => (
     <div>
+        <HeaderBeforeLogin/>
         <SignUpForm />
     </div>
 );

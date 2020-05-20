@@ -1,0 +1,47 @@
+
+.logout {
+  text-align: center;
+  font-family: "Baloo Chettan 2", cursive;
+  h1 {
+    font-size: 1.8rem;
+    margin: 12rem 0 2rem 0;
+  }
+  img {
+    margin-bottom: 3rem;
+    margin-left: 8rem;
+  }
+  a {
+    position: relative;
+    top: 2rem;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: black;
+    font-size: 0.8rem;
+    border-radius: 15px;
+    &:hover {
+      box-shadow: 0px 0px 4px 1px red;
+    }
+  }
+}
+
+.logOutButton {
+  border-radius: 15px;
+  font-family: "Baloo Chettan 2", cursive;
+  position: relative;
+  background-color: white;
+  border: none;
+  padding: 0.6rem 2rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  outline: 0;
+  &:hover{
+    opacity: 100%;
+    transition: 0.5s;
+    background-color: red;
+    box-shadow: 1px 1px 3px 1px red;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+  }
+}
