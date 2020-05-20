@@ -2,10 +2,12 @@ import React,{useEffect,useState} from 'react'
 import firebase from "firebase";
 import {useHistory} from "react-router-dom";
 import Header from "./Header";
+import {withFirebase} from "./Firebase";
 
 
+function CarList(props) {
 
-export default function CarList() {
+    const userAuth = props.firebase.getCurrentUser()
 
     const history = useHistory();
 
@@ -31,7 +33,7 @@ export default function CarList() {
     const db = firebase.firestore()
 
         useEffect( ( ) => {
-            db.collection(`cars`).get().then((querySnapshot) => {
+            db.collection(`${userAuth}`).get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     // console.log(`${doc.id} => ${doc.data()}`);
                     setAllCars( prev => ([...prev, doc.data()]))
@@ -43,8 +45,8 @@ export default function CarList() {
 
     // Usuwanie pojazdów z bazy
 
-    const handleDelete = (numRej) => {
-        db.collection("cars").doc(`${numRej}`).delete().then(function() {
+    const handleDelete = (numRej, userAuth) => {
+        db.collection(`${userAuth}`).doc(`${numRej}`).delete().then(function() {
             // alert("Document successfully deleted!");
         }).then( () => {
             const all = allCars.filter( car => car.numRej !== numRej )
@@ -118,7 +120,7 @@ export default function CarList() {
                                             <p>Przebieg: {car.vin}</p>
                                             <p>Data Serwisu: {car.date}</p>
                                             <button onClick={() => ShowMeMoreInfo(car.numRej)}>Więcej Informacji</button>
-                                            <button onClick={() => handleDelete(car.numRej)}>Usuń z bazy</button>
+                                            <button onClick={() => handleDelete(car.numRej, userAuth)}>Usuń z bazy</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -157,7 +159,7 @@ export default function CarList() {
         </>
     )
 }
-
+export default withFirebase(CarList)
 
 // JSON fetch
 
