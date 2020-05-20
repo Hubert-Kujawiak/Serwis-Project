@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import firebase from "firebase";
+import Header from "./Header";
 
 export default function carParts() {
 
@@ -69,6 +70,7 @@ export default function carParts() {
 
     return (
         <>
+            <Header/>
             <div className="allSide">
                 <div className="leftSide">
                     <div className="allParts">

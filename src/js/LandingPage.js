@@ -1,10 +1,16 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+import HeaderBeforeLogin from "./HeaderBeforeLogin";
+import {withFirebase} from "./Firebase";
+import Header from "./Header";
 
-export default function LandingPage() {
+function LandingPage( {firebase} ) {
+
+    const isUser = firebase.getCurrentUser()
 
     return (
         <>
+            {isUser ? <Header/> :<HeaderBeforeLogin/> }
             <div className="image">
                 <div className="welcomeText">
                     <h1>Witaj w aplikacji serwisowej!</h1>
@@ -16,5 +22,6 @@ export default function LandingPage() {
             </div>
         </>
     )
-
 }
+
+export default withFirebase(LandingPage)

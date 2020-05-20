@@ -1,7 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import {HashRouter as Router, Link, Route, Switch} from 'react-router-dom';
+import {withFirebase} from './Firebase'
+import SignOutButton from "./SignOut";
 
-export default function Header() {
+function Header({firebase}) {
 
     const day = new Date().getDate();
     const mon = new Date().getMonth()
@@ -17,7 +19,8 @@ export default function Header() {
         <Router>
             <header className="header">
                 <h1>Zaplanuj Przegląd!</h1>
-                <h2>{actH}<p></p>{actDate}</h2>
+                <h2>Cześć {firebase.getCurrentUser()}</h2><br/>
+                <h2><Link to="/logout"><SignOutButton/></Link></h2>
                 <nav>
                     <span><Link to="/">Home</Link></span>
                     <span><Link to="/add">Dodaj Pojazd</Link></span>
@@ -29,3 +32,5 @@ export default function Header() {
     </>
     )
 }
+
+export default withFirebase(Header)

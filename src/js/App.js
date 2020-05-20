@@ -8,11 +8,14 @@ import AddCar from "./AddCar";
 import CarList from "./CarList";
 import PartsPage from "./PartsPage";
 import Firebase, { FirebaseContext } from './Firebase';
+import HeaderBeforeLogin from "./HeaderBeforeLogin";
+import SignInPage from "./SignIn/SignInPage";
+import SignUpPage from "./SignUp/SignUpPage";
+import LogOut from "./LogOut";
 
 const App = () => (
     <>
         <Router>
-        <Header/>
         <Switch>
             <Route exact path="/">
                 <LandingPage/>
@@ -25,6 +28,15 @@ const App = () => (
             </Route>
             <Route path="/parts">
                 <PartsPage/>
+            </Route>
+            <Route path="/signin">
+                <SignInPage/>
+            </Route>
+            <Route path="/signup">
+                <SignUpPage/>
+            </Route>
+            <Route path="/logout">
+                <LogOut/>
             </Route>
         </Switch>
     </Router>

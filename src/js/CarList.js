@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import firebase from "firebase";
 import {useHistory} from "react-router-dom";
+import Header from "./Header";
 
 
 
@@ -62,6 +63,7 @@ export default function CarList() {
         const index = allCars.findIndex(car => car.numRej === numRej )
         const details = [...allCars][index]
         setMoreInfo(details)
+        console.log(index)
     }
 
     const style = {
@@ -96,6 +98,7 @@ export default function CarList() {
 
     return(
         <>
+            <Header/>
             <div className="allItem">
                 <div className="leftSide">
                     <div className="searchInput">

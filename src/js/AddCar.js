@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import firebase from "firebase";
 
 import { useHistory } from 'react-router-dom'
+import Header from "./Header";
 
 
 
@@ -136,6 +137,7 @@ export default function AddCar() {
 
     return (
         <>
+            <Header/>
             <div className="all">
                 <div className="addCar">
                     <form className="formAddCar" onSubmit={ () => handleSubmit(numbRej)}>

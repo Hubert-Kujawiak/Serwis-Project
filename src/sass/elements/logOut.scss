@@ -1,0 +1,25 @@
+.constantHeader {
+  margin-right: 5rem;
+}
+.logout {
+  text-align: center;
+  h1 {
+    font-size: 1.8rem;
+    margin: 12rem 0 2rem 0;
+  }
+  img {
+    margin-bottom: 3rem;
+    margin-left: 8rem;
+  }
+  a {
+    position: relative;
+    right: 11.5rem;
+    top: 2rem;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: black;
+    font-size: 0.8rem;
+    border: 1px solid black;
+  }
+}

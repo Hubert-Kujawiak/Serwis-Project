@@ -12,10 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "compose": "^0.1.2",
     "firebase": "^7.14.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
+    "recompose": "^0.30.0",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
