@@ -6,7 +6,9 @@ import Header from "./Header";
 
 
 
-export default function AddCar() {
+export default function AddCar(props) {
+
+    const userAuth = props.user
 
     const history = useHistory();
 
@@ -112,8 +114,8 @@ export default function AddCar() {
 
     const db = firebase.firestore()
 
-    const handleSubmit = (numbRej) => {
-        db.collection(`cars`).doc(`${numbRej}`).set({
+    const handleSubmit = (numbRej, userAuth) => {
+        db.collection(`${userAuth}`).doc(`${numbRej}`).set({
             mark: mark,
             model: model,
             body: body,
@@ -140,7 +142,7 @@ export default function AddCar() {
             <Header/>
             <div className="all">
                 <div className="addCar">
-                    <form className="formAddCar" onSubmit={ () => handleSubmit(numbRej)}>
+                    <form className="formAddCar" onSubmit={ () => handleSubmit(numbRej, userAuth)}>
                         <h1 className="errorMessage">{error}</h1>
                         <label className="markCar">Marka:
                             <input type="text" onChange={handleMark}/>
