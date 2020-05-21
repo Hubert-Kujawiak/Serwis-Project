@@ -7,6 +7,7 @@ import Header from "./Header";
 function LandingPage( {firebase} ) {
 
     const isUser = firebase.getCurrentUser()
+    console.log(isUser)
 
     return (
         <>

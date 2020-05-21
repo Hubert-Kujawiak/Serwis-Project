@@ -1,14 +1,15 @@
 import React,{useState,useEffect} from 'react'
 import firebase from "firebase";
+import {withFirebase} from "./Firebase";
 
 import { useHistory } from 'react-router-dom'
 import Header from "./Header";
 
 
 
-export default function AddCar(props) {
+function AddCar(props) {
 
-    const userAuth = props.user
+    const userAuth = props.firebase.getCurrentUser()
 
     const history = useHistory();
 
@@ -115,6 +116,7 @@ export default function AddCar(props) {
     const db = firebase.firestore()
 
     const handleSubmit = (numbRej, userAuth) => {
+
         db.collection(`${userAuth}`).doc(`${numbRej}`).set({
             mark: mark,
             model: model,
@@ -129,7 +131,7 @@ export default function AddCar(props) {
             price: price
         })
             .then(function (docRef) {
-                alert("Samochód dodany do bazy");
+                alert("Samochód został dodany do bazy");
                 history.push('/search')
             })
             .catch(function (error) {
@@ -142,7 +144,10 @@ export default function AddCar(props) {
             <Header/>
             <div className="all">
                 <div className="addCar">
-                    <form className="formAddCar" onSubmit={ () => handleSubmit(numbRej, userAuth)}>
+                    <form className="formAddCar" onSubmit={ (e) => {
+                        e.preventDefault()
+                        handleSubmit(numbRej, userAuth)
+                    }}>
                         <h1 className="errorMessage">{error}</h1>
                         <label className="markCar">Marka:
                             <input type="text" onChange={handleMark}/>
@@ -223,6 +228,8 @@ export default function AddCar(props) {
     )
 
 }
+
+export default withFirebase(AddCar)
 
 // const handleSubmit = (event) => {
 //     const cars = {
