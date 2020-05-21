@@ -71,7 +71,7 @@ class SignInFormBase extends Component {
                     onChange={this.onChange}
                     type="password"
                 /><br/>
-                <Link to="/register">Załóż konto</Link>
+                <Link to="/signup">Załóż konto</Link>
                 <button disabled={isInvalid} type="submit">
                     Zaloguj się
                 </button>
