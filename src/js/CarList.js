@@ -47,7 +47,7 @@ function CarList(props) {
 
     const handleDelete = (numRej, userAuth) => {
         db.collection(`${userAuth}`).doc(`${numRej}`).delete().then(function() {
-            // alert("Document successfully deleted!");
+            alert("Pojazd został usunięty z bazy!");
         }).then( () => {
             const all = allCars.filter( car => car.numRej !== numRej )
             setAllCars(all)

@@ -131,7 +131,7 @@ function AddCar(props) {
             price: price
         })
             .then(function (docRef) {
-                alert("Samochód dodany do bazy");
+                alert("Samochód został dodany do bazy");
                 history.push('/search')
             })
             .catch(function (error) {

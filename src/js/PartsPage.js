@@ -1,8 +1,12 @@
 import React,{useState,useEffect} from 'react'
 import firebase from "firebase";
 import Header from "./Header";
+import {withFirebase} from "./Firebase";
 
-export default function carParts() {
+function carParts(props) {
+
+    const userAuth = props.firebase.getCurrentUser()
+    console.log(userAuth)
 
     const [parts, setParts] = useState([])
     const [nameParts, setNameParts] = useState('')
@@ -30,7 +34,7 @@ export default function carParts() {
 
 
         useEffect( ( ) => {
-            db.collection(`parts`).get().then((querySnapshot) => {
+            db.collection(`${userAuth}-parts`).get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     // console.log(`${doc.id} => ${doc.data()}`);
                     setParts( prev => ([...prev, doc.data()]))
@@ -39,13 +43,13 @@ export default function carParts() {
         },[])
 
     const handleSubmit = (serialNumber) => {
-        db.collection(`parts`).doc(`${serialNumber}`).set({
+        db.collection(`${userAuth}-parts`).doc(`${serialNumber}`).set({
             name: nameParts,
             quantity: numParts,
             serNum: serialNumber
         })
             .then(function (docRef) {
-                alert("Document written in firebase");
+                alert("Część została dodana do bazy");
                 console.log(docRef)
                 // setParts(prevState => [...prevState, docRef])
             })
@@ -55,8 +59,8 @@ export default function carParts() {
     }
 
     const handleDelete = (serNum) => {
-        db.collection("parts").doc(`${serNum}`).delete().then(function() {
-            // alert("Document successfully deleted!");
+        db.collection(`${userAuth}-parts`).doc(`${serNum}`).delete().then(function() {
+            alert("Część została usunięta z bazy!");
         }).then( () => {
             const all = parts.filter( parts => parts.serNum !== serNum )
             setParts(all)
@@ -124,6 +128,8 @@ export default function carParts() {
         </>
     )
 }
+
+export default withFirebase(carParts)
 
 
 
