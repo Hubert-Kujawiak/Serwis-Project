@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import {HashRouter as Router, Link, Route, Switch} from 'react-router-dom';
 import {withFirebase} from './Firebase'
 import SignOutButton from "./SignOut";
+// import hamb from "../images/bars-solid.svg"
 
 function Header({firebase}) {
 
@@ -14,6 +15,26 @@ function Header({firebase}) {
     const m = new Date().getMinutes();
     const actH = ((h < 10 ? "0"+h : h) +" : " + (m < 10 ? "0"+m : m))
 
+    const [hideMenu, setHideMenu] = useState('none')
+    const [visibleMenu, setVisibleMenu] = useState('block')
+
+    const hideStyle = {
+        display: hideMenu,
+        cursor: "pointer"
+    }
+    const styleMenu = {
+        display: visibleMenu
+    }
+
+    const handleClickHideMenu = () => {
+        setHideMenu('block')
+        setVisibleMenu('none')
+    }
+    const handleUnVisible = () => {
+        setVisibleMenu('block')
+        setHideMenu('none')
+    }
+
     return (
     <>
         <Router>
@@ -21,6 +42,17 @@ function Header({firebase}) {
                 <h1>Zaplanuj Przegląd!</h1>
                 <h2>Cześć {firebase.getCurrentUser()}</h2><br/>
                 <h2><Link to="/logout"><SignOutButton/></Link></h2>
+                <div className="mobileMenuButton">
+                    <span className="fas fa-bars" onClick={handleClickHideMenu} style={styleMenu}></span>
+                    <div className="hideMenu" style={hideStyle}>
+                            <p onClick={handleUnVisible}>Cześć {firebase.getCurrentUser()}</p>
+                            <p><Link to="/">Home</Link></p>
+                            <p><Link to="/add">Dodaj Pojazd</Link></p>
+                            <p><Link to="/search">Baza Pojazdów</Link></p>
+                            <p><Link to="/parts">Baza Części</Link></p>
+                            <p><Link to="/logout"><SignOutButton/></Link></p>
+                    </div>
+                </div>
                 <nav>
                     <span><Link to="/">Home</Link></span>
                     <span><Link to="/add">Dodaj Pojazd</Link></span>

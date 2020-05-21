@@ -112,3 +112,26 @@
   margin-left: 9rem;
   font-size: 1rem;
 }
+
+@media (max-width: 600px) {
+  .all {
+    display: block;
+    .addCar {
+      margin: 0;
+      border-radius: 0;
+    }
+    .formAddCar {
+      display: grid;
+      margin: 0 auto;
+      .submitButton {
+        margin: 1rem auto;
+      }
+      label {
+        padding-left: 0;
+      }
+      .allAddList {
+        display: block;
+      }
+    }
+  }
+}

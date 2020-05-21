@@ -111,3 +111,23 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .allSide {
+    display: block;
+    .tableParts td {
+      padding: 1rem;
+    }
+    .tableParts thead {
+      font-size: 1rem;
+    }
+    .formAddParts {
+      width: fit-content;
+      margin: 1rem auto;
+    }
+    .parts {
+      width: auto;
+      margin: 1rem;
+    }
+  }
+}

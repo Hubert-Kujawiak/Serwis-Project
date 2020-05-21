@@ -89,7 +89,7 @@ class SignUpFormBase extends Component {
                     onChange={this.onChange}
                     type="password"
                 />
-                <Link to="/login">Zaloguj się</Link>
+                <Link to="/signin">Zaloguj się</Link>
                 <button disabled={isInvalid} type="submit">
                     Załóż konto
                 </button>

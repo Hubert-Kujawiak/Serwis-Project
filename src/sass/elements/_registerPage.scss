@@ -33,7 +33,7 @@
     right: 6rem;
     top: 3rem;
     background-color: white;
-    padding: 0.5rem 2rem;
+    padding: 0.6rem 2rem;
     text-decoration: none;
     color: black;
     font-size: 0.8rem;
@@ -69,5 +69,25 @@
   }
   label {
     font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .registerForm {
+    form {
+      box-shadow: 0px 0px 4px 1px red;
+      border-radius: 15px;
+      height: 15rem;
+      margin: 0 auto;
+      background-color: white;
+      padding: 2rem;
+      text-align: left;
+    }
+    a {
+      right: 2rem;
+    }
+    button {
+      left: 4rem;
+    }
   }
 }
