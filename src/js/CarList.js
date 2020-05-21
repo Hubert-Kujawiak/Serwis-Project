@@ -3,6 +3,8 @@ import firebase from "firebase";
 import {useHistory} from "react-router-dom";
 import Header from "./Header";
 import {withFirebase} from "./Firebase";
+import {Link} from 'react-scroll'
+
 
 
 function CarList(props) {
@@ -108,6 +110,33 @@ function CarList(props) {
                             <input type="text" onChange={handleSearchCar}/>
                         </label>
                     </div>
+                    <div className="otherInformation" style={style}>
+                        <h1>Marka: {moreInfo.mark}</h1>
+                        <p>Model: {moreInfo.model}</p>
+                        <p>Nadwozie: {moreInfo.body}</p>
+                        <p>Paliwo: {moreInfo.fuel}</p>
+                        <p>Moc: {moreInfo.power} km</p>
+                        <p>Przebieg: {moreInfo.vin}</p>
+                        <p>Num Rejestracyjny: {moreInfo.numRej}</p>
+                        <p>Data Serwisu: {moreInfo.date}</p>
+                        <p className="morePlace">Wykonane naprawy: {moreInfo.other && moreInfo.other.join(" , ")}</p>
+                        <p className="morePlace">Wymienione części: {moreInfo.parts && moreInfo.parts.join(" , ")}</p>
+                        <p>Cena Usługi: {moreInfo.price} zł</p>
+                        <button onClick={handleAddRepair}>Dodaj</button>
+                        <button onClick={handleCloseMoreInfo}>Zamknij</button>
+                        <div className="addRepair" style={styleAddRepair}>
+                            <form onSubmit={() => handleSubmitAddRepair(moreInfo)}>
+                                <textarea placeholder="Naprawy" onChange={handleFirstPlace} value={firstAddInput}></textarea>
+                                <textarea placeholder="Części" onChange={handleSecondPlace} value={secondAddInput}></textarea>
+                                <br/>
+                                <label>Cena Usługi: </label>
+                                <input onChange={handlePriceRepair}/>
+                                <p></p>
+                                <button type="submit">Zapisz</button>
+                                <a onClick={handleUnvisibleForm}>Ukryj</a>
+                            </form>
+                        </div>
+                    </div>
                     <div>
                         {
                             allCars.filter(el => el.mark.substr(0, searchCar.length).toLowerCase().includes(searchCar)).map( car => (
@@ -128,33 +157,33 @@ function CarList(props) {
                         }
                     </div>
                 </div>
-                <div className="otherInformation" style={style}>
-                    <h1>Marka: {moreInfo.mark}</h1>
-                    <p>Model: {moreInfo.model}</p>
-                    <p>Nadwozie: {moreInfo.body}</p>
-                    <p>Paliwo: {moreInfo.fuel}</p>
-                    <p>Moc: {moreInfo.power} km</p>
-                    <p>Przebieg: {moreInfo.vin}</p>
-                    <p>Num Rejestracyjny: {moreInfo.numRej}</p>
-                    <p>Data Serwisu: {moreInfo.date}</p>
-                    <p className="morePlace">Wykonane naprawy: {moreInfo.other && moreInfo.other.join(" , ")}</p>
-                    <p className="morePlace">Wymienione części: {moreInfo.parts && moreInfo.parts.join(" , ")}</p>
-                    <p>Cena Usługi: {moreInfo.price} zł</p>
-                    <button onClick={handleAddRepair}>Dodaj</button>
-                    <button onClick={handleCloseMoreInfo}>Zamknij</button>
-                    <div className="addRepair" style={styleAddRepair}>
-                        <form onSubmit={() => handleSubmitAddRepair(moreInfo)}>
-                            <textarea placeholder="Naprawy" onChange={handleFirstPlace} value={firstAddInput}></textarea>
-                            <textarea placeholder="Części" onChange={handleSecondPlace} value={secondAddInput}></textarea>
-                            <br/>
-                            <label>Cena Usługi: </label>
-                            <input onChange={handlePriceRepair}/>
-                            <p></p>
-                            <button type="submit">Zapisz</button>
-                            <a onClick={handleUnvisibleForm}>Ukryj</a>
-                        </form>
-                    </div>
-                </div>
+                {/*<div className="otherInformation" style={style}>*/}
+                {/*    <h1>Marka: {moreInfo.mark}</h1>*/}
+                {/*    <p>Model: {moreInfo.model}</p>*/}
+                {/*    <p>Nadwozie: {moreInfo.body}</p>*/}
+                {/*    <p>Paliwo: {moreInfo.fuel}</p>*/}
+                {/*    <p>Moc: {moreInfo.power} km</p>*/}
+                {/*    <p>Przebieg: {moreInfo.vin}</p>*/}
+                {/*    <p>Num Rejestracyjny: {moreInfo.numRej}</p>*/}
+                {/*    <p>Data Serwisu: {moreInfo.date}</p>*/}
+                {/*    <p className="morePlace">Wykonane naprawy: {moreInfo.other && moreInfo.other.join(" , ")}</p>*/}
+                {/*    <p className="morePlace">Wymienione części: {moreInfo.parts && moreInfo.parts.join(" , ")}</p>*/}
+                {/*    <p>Cena Usługi: {moreInfo.price} zł</p>*/}
+                {/*    <button onClick={handleAddRepair}>Dodaj</button>*/}
+                {/*    <button onClick={handleCloseMoreInfo}>Zamknij</button>*/}
+                {/*    <div className="addRepair" style={styleAddRepair}>*/}
+                {/*        <form onSubmit={() => handleSubmitAddRepair(moreInfo)}>*/}
+                {/*            <textarea placeholder="Naprawy" onChange={handleFirstPlace} value={firstAddInput}></textarea>*/}
+                {/*            <textarea placeholder="Części" onChange={handleSecondPlace} value={secondAddInput}></textarea>*/}
+                {/*            <br/>*/}
+                {/*            <label>Cena Usługi: </label>*/}
+                {/*            <input onChange={handlePriceRepair}/>*/}
+                {/*            <p></p>*/}
+                {/*            <button type="submit">Zapisz</button>*/}
+                {/*            <a onClick={handleUnvisibleForm}>Ukryj</a>*/}
+                {/*        </form>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
         </>
     )

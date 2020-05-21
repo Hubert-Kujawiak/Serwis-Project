@@ -21,7 +21,7 @@
     right: 7rem;
     top: 2rem;
     background-color: white;
-    padding: 0.5rem 1.5rem;
+    padding: 0.6rem 1.5rem;
     text-decoration: none;
     color: black;
     font-size: 0.8rem;
@@ -74,6 +74,20 @@
       margin-top: 4rem;
       color: red;
       font-weight: lighter;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .loginForm {
+    form {
+      width: auto;
+    }
+    a {
+      right: 1rem;
+    }
+    button {
+      left: 1rem;
     }
   }
 }

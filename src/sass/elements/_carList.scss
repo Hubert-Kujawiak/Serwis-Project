@@ -134,3 +134,17 @@
     margin-bottom: 1rem;
   }
 }
+
+@media (max-width: 600px) {
+  .allItem {
+    display: block;
+    .leftSide {
+      .allCarList {
+        width: auto;
+      }
+    }
+    .otherInformation {
+      width: auto;
+    }
+  }
+}

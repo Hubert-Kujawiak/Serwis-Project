@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import firebase from "firebase";
 import {withFirebase} from "./Firebase";
-
 import { useHistory } from 'react-router-dom'
 import Header from "./Header";
 
@@ -116,7 +115,6 @@ function AddCar(props) {
     const db = firebase.firestore()
 
     const handleSubmit = (numbRej, userAuth) => {
-
         db.collection(`${userAuth}`).doc(`${numbRej}`).set({
             mark: mark,
             model: model,
@@ -167,7 +165,7 @@ function AddCar(props) {
                             <input type="text" onChange={handleRejNum}/>
                         </label>
                         <label>Data Serwisu:
-                            <input placeholder="DD.MM.RRRR" onChange={handleDate}/>
+                            <input type="date" placeholder="DD.MM.RRRR" onChange={handleDate}/>
                         </label>
                         <div className="selectOption">
                             <label htmlFor="car">Nadwozie: </label>

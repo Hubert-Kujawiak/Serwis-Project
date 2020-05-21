@@ -28,6 +28,10 @@ export default function HeaderBeforeLogin() {
         setHideMenu('block')
         setVisibleMenu('none')
     }
+    const handleUnVisible = () => {
+        setVisibleMenu('block')
+        setHideMenu('none')
+    }
 
     return (
         <>
@@ -35,9 +39,9 @@ export default function HeaderBeforeLogin() {
                     <h1>Zaplanuj Przegląd!</h1>
                     <h2>{actH}<p></p>{actDate}</h2>
                     <div className="mobileMenuButton">
-                        <span onClick={handleClickHideMenu} style={styleMenu}>Menu</span>
+                        <span className="fas fa-bars" onClick={handleClickHideMenu} style={styleMenu}></span>
                         <div className="hideMenu" style={hideStyle}>
-                            <p><Link to="/">Start</Link></p>
+                            <p onClick={handleUnVisible}><Link to="/">Ukryj</Link></p>
                             <p><Link to="/signin">Zaloguj</Link></p>
                             <p><Link to="/signup">Załóż konto</Link></p>
                         </div>

@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import {HashRouter as Router, Link, Route, Switch} from 'react-router-dom';
 import {withFirebase} from './Firebase'
 import SignOutButton from "./SignOut";
-// import hamburger from '../images/bars-solid.svg'
+// import hamb from "../images/bars-solid.svg"
 
 function Header({firebase}) {
 
@@ -30,6 +30,10 @@ function Header({firebase}) {
         setHideMenu('block')
         setVisibleMenu('none')
     }
+    const handleUnVisible = () => {
+        setVisibleMenu('block')
+        setHideMenu('none')
+    }
 
     return (
     <>
@@ -39,9 +43,9 @@ function Header({firebase}) {
                 <h2>Cześć {firebase.getCurrentUser()}</h2><br/>
                 <h2><Link to="/logout"><SignOutButton/></Link></h2>
                 <div className="mobileMenuButton">
-                    <span onClick={handleClickHideMenu} style={styleMenu}>Menu</span>
+                    <span className="fas fa-bars" onClick={handleClickHideMenu} style={styleMenu}></span>
                     <div className="hideMenu" style={hideStyle}>
-                            <p>Cześć {firebase.getCurrentUser()}</p>
+                            <p onClick={handleUnVisible}>Cześć {firebase.getCurrentUser()}</p>
                             <p><Link to="/">Home</Link></p>
                             <p><Link to="/add">Dodaj Pojazd</Link></p>
                             <p><Link to="/search">Baza Pojazdów</Link></p>

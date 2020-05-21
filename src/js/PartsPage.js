@@ -6,7 +6,6 @@ import {withFirebase} from "./Firebase";
 function carParts(props) {
 
     const userAuth = props.firebase.getCurrentUser()
-    console.log(userAuth)
 
     const [parts, setParts] = useState([])
     const [nameParts, setNameParts] = useState('')
@@ -50,8 +49,11 @@ function carParts(props) {
         })
             .then(function (docRef) {
                 alert("Część została dodana do bazy");
-                console.log(docRef)
-                // setParts(prevState => [...prevState, docRef])
+                addNew({
+                    name: nameParts,
+                    quantity: numParts,
+                    serNum: serialNumber
+                })
             })
             .catch(function (error) {
                 console.error("Error adding document: ", error);
@@ -69,6 +71,13 @@ function carParts(props) {
         });
     }
 
+    const addNew = (obj) => {
+        setParts(prevState => ([
+            ...prevState,
+            obj
+        ]))
+    }
+
     // Koniec Database
 
 
@@ -78,7 +87,10 @@ function carParts(props) {
             <div className="allSide">
                 <div className="leftSide">
                     <div className="allParts">
-                        <form className="formAddParts" onSubmit={ () => handleSubmit(serialNumber)}>
+                        <form className="formAddParts" onSubmit={ (e) => {
+                            e.preventDefault()
+                            handleSubmit(serialNumber)
+                        }}>
                             <label>Nazwa części:
                                 <p>
                                 <input type="text" onChange={handleNameParts} value={nameParts}/>
@@ -115,8 +127,8 @@ function carParts(props) {
                                         <td>{parts.name}</td>
                                         <td>{parts.quantity}</td>
                                         <td>{parts.serNum}</td>
-                                        <button className="btnMinus" onClick={ () => handleMinusParts(parts)}>-</button>
-                                        <button className="btnMinus" onClick={ () => handlePlusParts(parts)}>+</button>
+                                        {/*<button className="btnMinus" onClick={ () => handleMinusParts(parts)}>-</button>*/}
+                                        {/*<button className="btnMinus" onClick={ () => handlePlusParts(parts)}>+</button>*/}
                                         <button className="btnDelete" onClick={() => handleDelete(parts.serNum)}>Usuń</button>
                                     </tr>
                                 ))
