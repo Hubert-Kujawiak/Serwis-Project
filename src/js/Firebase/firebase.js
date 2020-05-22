@@ -3,14 +3,14 @@ import 'firebase/auth';
 import 'firebase/database'
 
 const config = {
-    apiKey: "AIzaSyCvheFYNbhlQoz-sn2nyCkRDpOdZRR2Oeo",
-    authDomain: "serviceapp-7ab97.firebaseapp.com",
-    databaseURL: "https://serviceapp-7ab97.firebaseio.com",
-    projectId: "serviceapp-7ab97",
-    storageBucket: "serviceapp-7ab97.appspot.com",
-    messagingSenderId: "979294650200",
-    appId: "1:979294650200:web:6f7fb6b65c5fcbc8992f2d",
-    measurementId: "G-B9ZGD31FKC"
+    apiKey: "AIzaSyCCx06rq5qiZEpUIJElLfaeiPwTx6RR1dE",
+    authDomain: "zaplanujprzeglad-abb92.firebaseapp.com",
+    databaseURL: "https://zaplanujprzeglad-abb92.firebaseio.com",
+    projectId: "zaplanujprzeglad-abb92",
+    storageBucket: "zaplanujprzeglad-abb92.appspot.com",
+    messagingSenderId: "49655074857",
+    appId: "1:49655074857:web:c2044694a04bba58568c38",
+    measurementId: "G-6MK3N6P7C2"
 };
 
 class Firebase {
