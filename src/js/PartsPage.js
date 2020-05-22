@@ -58,6 +58,9 @@ function carParts(props) {
             .catch(function (error) {
                 console.error("Error adding document: ", error);
             });
+        setNameParts('')
+        setNumParts('')
+        setSerialNumber('')
     }
 
     const handleDelete = (serNum) => {

@@ -67,7 +67,60 @@ function CarList(props) {
         const index = allCars.findIndex(car => car.numRej === numRej )
         const details = [...allCars][index]
         setMoreInfo(details)
-        console.log(index)
+        console.log(moreInfo)
+    }
+
+    const handleSubmitAddRepair = (obj) => {
+        const updateRepair = db.collection(`${userAuth}`).doc(`${obj.numRej}`);
+        updateRepair.set({
+            mark: obj.mark,
+            model: obj.model,
+            body: obj.body,
+            fuel: obj.fuel,
+            power: obj.power,
+            vin: obj.vin,
+            numRej: obj.numRej,
+            date: obj.date,
+            other: [...obj.other, "Data: " + actDate, ...firstAddInput.split(',')],
+            parts: [...obj.parts, "Data: " + actDate, ...secondAddInput.split(',')],
+            price: priceRepair
+        })
+            .then(function (docRef) {
+            addNew({
+                mark: obj.mark,
+                model: obj.model,
+                body: obj.body,
+                fuel: obj.fuel,
+                power: obj.power,
+                vin: obj.vin,
+                numRej: obj.numRej,
+                date: obj.date,
+                other: [...obj.other, "Data: " + actDate, ...firstAddInput.split(',')],
+                parts: [...obj.parts, "Data: " + actDate, ...secondAddInput.split(',')],
+                price: priceRepair
+            })
+        })
+        setFirstAddInput('')
+        setSecondAddInput('')
+        setPriceRepair('')
+        setShowAddRepair('none')
+    }
+
+    const addNew = (obj) => {
+        setMoreInfo(prevState => ({
+            ...prevState,
+            mark: obj.mark,
+            model: obj.model,
+            body: obj.body,
+            fuel: obj.fuel,
+            power: obj.power,
+            vin: obj.vin,
+            numRej: obj.numRej,
+            date: obj.date,
+            other: [...obj.other, "Data: " + actDate, ...firstAddInput.split(',')],
+            parts: [...obj.parts, "Data: " + actDate, ...secondAddInput.split(',')],
+            price: priceRepair
+        }))
     }
 
     const style = {
@@ -145,7 +198,10 @@ function CarList(props) {
                     <button onClick={handleAddRepair}>Dodaj</button>
                     <button onClick={handleCloseMoreInfo}>Zamknij</button>
                     <div className="addRepair" style={styleAddRepair}>
-                        <form onSubmit={() => handleSubmitAddRepair(moreInfo)}>
+                        <form onSubmit={(e) => {
+                            e.preventDefault()
+                            handleSubmitAddRepair(moreInfo)
+                        }}>
                             <textarea placeholder="Naprawy" onChange={handleFirstPlace} value={firstAddInput}></textarea>
                             <textarea placeholder="Części" onChange={handleSecondPlace} value={secondAddInput}></textarea>
                             <br/>
