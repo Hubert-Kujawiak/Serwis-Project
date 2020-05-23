@@ -3,8 +3,6 @@ import firebase from "firebase";
 import {useHistory} from "react-router-dom";
 import Header from "./Header";
 import {withFirebase} from "./Firebase";
-import {Link} from 'react-scroll'
-
 
 
 function CarList(props) {

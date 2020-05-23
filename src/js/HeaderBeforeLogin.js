@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {HashRouter as Router, Link, Route, Switch} from 'react-router-dom';
-import SignOutButton from "./SignOut";
+
 
 export default function HeaderBeforeLogin() {
 

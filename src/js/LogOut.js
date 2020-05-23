@@ -10,7 +10,7 @@ export default function LogOut() {
     useEffect(() => {
         const timeout = setTimeout(() => {
             history.push("/")
-        }, 3000)
+        }, 2000)
         return () => clearTimeout(timeout)
     })
 

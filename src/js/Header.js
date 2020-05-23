@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react'
 import {HashRouter as Router, Link, Route, Switch} from 'react-router-dom';
 import {withFirebase} from './Firebase'
 import SignOutButton from "./SignOut";
-// import hamb from "../images/bars-solid.svg"
 
 function Header({firebase}) {
 

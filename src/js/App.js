@@ -3,12 +3,10 @@ import ReactDOM from 'react-dom'
 import {HashRouter as Router, Link, Route, Switch} from 'react-router-dom';
 import "../sass/all.scss"
 import LandingPage from "./LandingPage";
-import Header from "./Header";
 import AddCar from "./AddCar";
 import CarList from "./CarList";
 import PartsPage from "./PartsPage";
 import Firebase, { FirebaseContext } from './Firebase';
-import HeaderBeforeLogin from "./HeaderBeforeLogin";
 import SignInPage from "./SignIn/SignInPage";
 import SignUpPage from "./SignUp/SignUpPage";
 import LogOut from "./LogOut";
