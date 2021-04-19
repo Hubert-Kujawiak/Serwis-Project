@@ -14,7 +14,7 @@ import LogOut from "./LogOut";
 const App = () => (
     <>
         <Router>
-        <Switch>
+        <Switch>    
             <Route exact path="/">
                 <LandingPage/>
             </Route>

@@ -38,7 +38,7 @@ function Header({firebase}) {
     <>
         <Router>
             <header className="header">
-                <h1>Zaplanuj Przegląd!</h1>
+                <h1>Dodaj Przegląd!</h1>
                 <h2>Cześć {firebase.getCurrentUser()}</h2><br/>
                 <h2><Link to="/logout"><SignOutButton/></Link></h2>
                 <div className="mobileMenuButton">

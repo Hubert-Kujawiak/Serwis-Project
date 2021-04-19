@@ -36,7 +36,7 @@ export default function HeaderBeforeLogin() {
     return (
         <>
                 <header className="header">
-                    <h1>Zaplanuj Przegląd!</h1>
+                    <h1>Dodaj Przegląd!</h1>
                     <h2>{actH}<p></p>{actDate}</h2>
                     <div className="mobileMenuButton">
                         <span className="fas fa-bars" onClick={handleClickHideMenu} style={styleMenu}></span>
